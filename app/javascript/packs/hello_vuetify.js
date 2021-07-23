@@ -2,7 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     new Vue({
         el: '#app',
-        vuetify: new Vuetify()
+        vuetify: new Vuetify(),
+        date: {
+            id: ""
+        },
     })
     let localStream;
 
@@ -21,7 +24,29 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     })
     const peer = new Peer({
-        key: ,
+        key: process.env.SKYWAY_API_KEY,
         debug: 3
+    })
+    peer.on('open', () => {
+        this.id = document.getElementById('my-id').textContent = peer.id;
     });
+    peer.on('call', mediaConnection => {
+        mediaConnection.answer(localStream);
+        setEventListener(mediaConnection);
+    });
+    document.getElementById('make-call').onclick = () => {
+        const theirID = document.getElementById('their-id').value;
+        const mediaConnection = peer.call(theirID, localStream);
+        setEventListener(mediaConnection);
+    };
+
+// イベントリスナを設置する関数
+    const setEventListener = mediaConnection => {
+        mediaConnection.on('stream', stream => {
+            // video要素にカメラ映像をセットして再生
+            const videoElm = document.getElementById('their-video')
+            videoElm.srcObject = stream;
+            videoElm.play();
+        });
+    }
 })

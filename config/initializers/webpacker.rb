@@ -1,0 +1,1 @@
+Webpacker::Compiler.env["SKYWAY_API_KEY"] = Settings.dig(:skyway,:key)
