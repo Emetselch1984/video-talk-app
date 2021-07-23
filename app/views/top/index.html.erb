@@ -1,6 +1,29 @@
 <v-app id="app">
   <v-main>
-    <p class="red text-center">Heelo</p>
+    <titel>Skywayチュートリアル</titel>
+    <section>
+      <v-row class="justify-center">
+        <v-col
+          cols=11
+        >
+          <v-row>
+            <v-col
+              cols=6
+            >
+              <video id="my-video" width="100%" autoplay muted playsinline></video>
+              <p id="my-id">{{id}}</p>
+            </v-col>
+            <v-col
+              cols=6
+            >
+              <video id="their-video" width="100%" autoplay muted playsinline></video>
+              <input id="their-id"></input>
+              <button id="make-call">発信</button>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+    </section>
   </v-main>
 </v-app>
 <%= javascript_pack_tag 'hello_vuetify' %>
