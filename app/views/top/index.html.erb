@@ -2,11 +2,27 @@
   <v-main>
     <titel>Skywayチュートリアル</titel>
     <section>
-      <video id="my-video" width="400px" autoplay muted playsinline></video>
-      <p id="my-id">{{id}}</p>
-      <input id="their-id"></input>
-      <button id="make-call">発信</button>
-      <video id="their-video" width="400px" autoplay muted playsinline></video>
+      <v-row class="justify-center">
+        <v-col
+          cols=11
+        >
+          <v-row>
+            <v-col
+              cols=6
+            >
+              <video id="my-video" width="100%" autoplay muted playsinline></video>
+              <p id="my-id">{{id}}</p>
+            </v-col>
+            <v-col
+              cols=6
+            >
+              <video id="their-video" width="100%" autoplay muted playsinline></video>
+              <input id="their-id"></input>
+              <button id="make-call">発信</button>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
     </section>
   </v-main>
 </v-app>
