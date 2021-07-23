@@ -1,0 +1,2 @@
+db:
+  password: <%= Rails.application.credentials.dig(:db, :password) %>
